@@ -19,7 +19,7 @@ interface TaskContextType {
   deleteTask: (taskId: string) => Promise<void>
   toggleTaskComplete: (taskId: string) => Promise<void>
   archiveTask: (taskId: string) => Promise<void>
-  reorderTasks: (listId: string, tasks: Task[]) => Promise<void>
+  reorderTasks: (tasks: Task[]) => Promise<void>
   addSubtask: (taskId: string, title: string) => Promise<void>
   updateSubtask: (taskId: string, subtaskId: string, updates: Partial<Subtask>) => Promise<void>
   deleteSubtask: (taskId: string, subtaskId: string) => Promise<void>
@@ -265,7 +265,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  const reorderTasks = async (listId: string, reorderedTasks: Task[]) => {
+  const reorderTasks = async (reorderedTasks: Task[]) => {
     try {
       await Promise.all(
         reorderedTasks.map((task, index) =>

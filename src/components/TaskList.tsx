@@ -30,9 +30,7 @@ const TaskList = ({ listId, archived = false }: TaskListProps) => {
     const [moved] = reordered.splice(oldIndex, 1)
     reordered.splice(newIndex, 0, moved)
 
-    if (listId) {
-      reorderTasks(listId, reordered)
-    }
+    reorderTasks(reordered)
   }
 
   if (filteredTasks.length === 0) {
