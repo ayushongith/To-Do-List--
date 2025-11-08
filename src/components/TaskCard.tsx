@@ -13,7 +13,6 @@ import {
   Edit,
   Plus,
 } from 'lucide-react'
-import dynamic from 'next/dynamic'
 import { format } from 'date-fns'
 import { Task } from '@/types'
 import { useTask } from '@/contexts/TaskContext'

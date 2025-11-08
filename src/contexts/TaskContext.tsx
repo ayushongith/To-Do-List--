@@ -1,17 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react'
-import {
-  collection,
-  query,
-  where,
-  onSnapshot,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  serverTimestamp,
-  orderBy,
-  Timestamp,
-} from 'firebase/firestore'
+import { collection, doc, setDoc, deleteDoc, updateDoc, Timestamp, getDocs, query, where, onSnapshot, orderBy, serverTimestamp } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import { Task, TaskList, Subtask, FilterOptions, Priority, ColorLabel } from '@/types'
 import { useAuth } from './AuthContext'
@@ -27,7 +15,7 @@ interface TaskContextType {
   deleteList: (listId: string) => Promise<void>
   reorderLists: (lists: TaskList[]) => Promise<void>
   createTask: (listId: string, task: Partial<Task>) => Promise<void>
-  updateTask: (taskId: string, updates: Partial<Task>) => Promise<void>
+  updateTask: (taskId: string, updates: Partial<Omit<Task, 'id' | 'createdAt' | 'updatedAt'>>) => Promise<void>
   deleteTask: (taskId: string) => Promise<void>
   toggleTaskComplete: (taskId: string) => Promise<void>
   archiveTask: (taskId: string) => Promise<void>
@@ -225,7 +213,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  const updateTask = async (taskId: string, updates: Partial<Task>) => {
+  const updateTask = async (taskId: string, updates: Partial<Omit<Task, 'id' | 'createdAt' | 'updatedAt'>>) => {
     try {
       const updateData: any = { ...updates, updatedAt: serverTimestamp() }
       if (updates.dueAt) {

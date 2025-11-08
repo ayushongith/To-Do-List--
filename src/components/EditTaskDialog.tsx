@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { X, Calendar, Tag, Plus } from 'lucide-react'
+import { X, Calendar, Tag } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTask } from '@/contexts/TaskContext'
 import { Task, Priority, ColorLabel } from '@/types'

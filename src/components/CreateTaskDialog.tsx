@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { X, Calendar, Tag, Plus } from 'lucide-react'
+import { X, Calendar, Tag } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTask } from '@/contexts/TaskContext'
 import { Priority, ColorLabel } from '@/types'
-import { useEffect } from 'react'
 
 interface CreateTaskDialogProps {
   open: boolean
