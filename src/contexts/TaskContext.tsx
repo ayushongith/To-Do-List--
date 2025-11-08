@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react'
-import { collection, doc, setDoc, deleteDoc, updateDoc, Timestamp, getDocs, query, where, onSnapshot, orderBy, serverTimestamp } from 'firebase/firestore'
+import { collection, doc, deleteDoc, updateDoc, Timestamp, query, where, onSnapshot, serverTimestamp, addDoc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
-import { Task, TaskList, Subtask, FilterOptions, Priority, ColorLabel } from '@/types'
+import { Task, TaskList, Subtask, FilterOptions } from '@/types'
 import { useAuth } from './AuthContext'
 import { useToast } from './ToastContext'
 

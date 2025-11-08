@@ -10,7 +10,7 @@ interface TaskListProps {
 }
 
 const TaskList = ({ listId, archived = false }: TaskListProps) => {
-  const { tasks, getFilteredTasks, reorderTasks } = useTask()
+  const { getFilteredTasks, reorderTasks } = useTask()
 
   const filteredTasks = useMemo(() => {
     const filtered = getFilteredTasks(listId || undefined)
